@@ -5,7 +5,6 @@
 #ifndef SP_Y2S2M4_POINT_HPP
 #define SP_Y2S2M4_POINT_HPP
 namespace ariel{}
-using namespace std;
 
 
 class Point {
