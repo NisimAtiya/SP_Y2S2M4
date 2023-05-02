@@ -3,6 +3,9 @@
 //
 
 #include "Ninja.hpp"
+Ninja::Ninja(string, Point) {
+
+}
 
 void Ninja::move(const Character &) {
 
@@ -16,6 +19,8 @@ Ninja::~Ninja() {
 
 }
 
-Ninja::Ninja(string, Point) {
 
+
+string Ninja::Print() {
+    return std::string();
 }

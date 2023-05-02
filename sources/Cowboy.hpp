@@ -16,6 +16,7 @@ class Cowboy : public Character{
         void shoot(Character&);
         bool hasboolets();
         void reload();
+        string Print();
         ~Cowboy();
 
 

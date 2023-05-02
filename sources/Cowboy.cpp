@@ -19,5 +19,17 @@ void Cowboy::reload() {
 
 }
 
+void Cowboy::shoot(Character &) {
+
+}
+
+Cowboy::~Cowboy() {
+
+}
+
+string Cowboy::Print() {
+
+}
+
 
 

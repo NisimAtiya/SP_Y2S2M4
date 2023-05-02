@@ -17,16 +17,17 @@ class Character {
         int hit_points_;
         void(*print_fanc);
         void(*create);
-protected:
-    Character();
+
 
     public:
+        Character();
         bool isAlive();
         double distance(const Character&);
         void hit(int);
         string getName();
         Point getLocation();
-        void print();
+
+    virtual void print();
 
 };
 

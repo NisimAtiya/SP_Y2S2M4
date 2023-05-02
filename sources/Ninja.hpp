@@ -15,6 +15,7 @@ class Ninja : public Character{
         Ninja(string,Point);
         void move(const Character&);
         void slash( Character&);
+        string Print();
         ~Ninja();
 };
 

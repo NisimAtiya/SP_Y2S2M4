@@ -16,7 +16,7 @@ Team::Team(const Cowboy &) {
 
 }
 
-void Team::attack(Team &) {
+void Team::attack(Team *) {
 
 }
 

@@ -20,7 +20,7 @@ class Team {
         Team(const Ninja&);
         Team(const Cowboy&);
         void add(const Character&);
-        void attack(Team&);
+        void attack(Team*);
         int stillAlive();
         void print();
         ~Team();
