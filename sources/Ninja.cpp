@@ -22,5 +22,5 @@ Ninja::~Ninja() {
 
 
 string Ninja::Print() {
-    return std::string();
+    return "";
 }

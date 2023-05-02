@@ -28,6 +28,7 @@ Cowboy::~Cowboy() {
 }
 
 string Cowboy::Print() {
+    return "";
 
 }
 
