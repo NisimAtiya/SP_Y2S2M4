@@ -13,7 +13,7 @@ class Cowboy : public Character{
         int amount_balls;
     public:
         Cowboy(string,Point);
-        void shoot(Character&);
+        void shoot(Character*);
         bool hasboolets();
         void reload();
         string Print();

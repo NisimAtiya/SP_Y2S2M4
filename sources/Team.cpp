@@ -4,15 +4,15 @@
 
 #include "Team.hpp"
 
-void Team::add(const Character &) {
+void Team::add(const Character *) {
 
 }
 
-Team::Team(const Ninja &) {
+Team::Team(const Ninja *) {
 
 }
 
-Team::Team(const Cowboy &) {
+Team::Team(const Cowboy *) {
 
 }
 

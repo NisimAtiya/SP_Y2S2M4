@@ -19,7 +19,7 @@ void Cowboy::reload() {
 
 }
 
-void Cowboy::shoot(Character &) {
+void Cowboy::shoot(Character *) {
 
 }
 

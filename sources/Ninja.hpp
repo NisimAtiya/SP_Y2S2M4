@@ -13,8 +13,8 @@ class Ninja : public Character{
     public:
 
         Ninja(string,Point);
-        void move(const Character&);
-        void slash( Character&);
+        void move(const Character*);
+        void slash( Character*);
         string Print();
         ~Ninja();
 };

@@ -7,11 +7,11 @@ Ninja::Ninja(string, Point) {
 
 }
 
-void Ninja::move(const Character &) {
+void Ninja::move(const Character *) {
 
 }
 
-void Ninja::slash( Character &) {
+void Ninja::slash( Character *) {
 
 }
 

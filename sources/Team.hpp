@@ -7,6 +7,7 @@
 #include "Ninja.hpp"
 #include "OldNinja.hpp"
 #include "YoungNinja.hpp"
+#include "TrainedNinja.hpp"
 #include "Cowboy.hpp"
 #include <vector>
 using namespace std;
@@ -17,9 +18,9 @@ class Team {
         vector<Ninja> Ninja_grup_;
         vector<Cowboy> Cowboy_gru_;
     public:
-        Team(const Ninja&);
-        Team(const Cowboy&);
-        void add(const Character&);
+        Team(const Ninja*);
+        Team(const Cowboy*);
+        void add(const Character*);
         void attack(Team*);
         int stillAlive();
         void print();
