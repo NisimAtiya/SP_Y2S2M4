@@ -27,7 +27,7 @@ class Character {
         string getName();
         Point getLocation();
 
-    virtual void print();
+    virtual string print();
 
 };
 
