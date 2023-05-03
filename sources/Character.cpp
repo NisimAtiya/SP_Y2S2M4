@@ -24,7 +24,8 @@ Point Character::getLocation() {
     return Point(0, 0);
 }
 
-void Character::print() {
+string Character::print() {
+    return "";
 
 }
 
