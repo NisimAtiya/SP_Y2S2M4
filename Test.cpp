@@ -5,11 +5,12 @@
 #include "sources/YoungNinja.hpp"
 #include "sources/TrainedNinja.hpp"
 #include "sources/OldNinja.hpp"
+#include "sources/Team.hpp"
 
 using namespace ariel;
 TEST_CASE("Test on  Constructor of point"){
     CHECK_NOTHROW(Point p1(1.5, 2.5));
-    CHECK_NOTHROW(Point p2());
+    CHECK_NOTHROW(Point p2=Point());
     CHECK_NOTHROW(Point p3(1, 2));
 
 }
@@ -126,4 +127,35 @@ TEST_CASE("Test on  functions of YoungNinja"){
     CHECK(c1->isAlive() == true);
     CHECK(c1->distance(c2)==0);
     CHECK(c1->getName()=="nisim");
+}
+
+TEST_CASE("Test on the functions of Team") {
+    YoungNinja *ninja1=new YoungNinja("Ninja1", Point(0, 0));
+    YoungNinja *ninja2=new YoungNinja("Ninja2", Point(1, 1));
+    YoungNinja *ninja3=new YoungNinja("Ninja3", Point(2, 2));
+    YoungNinja *leader_YoungNinja = new YoungNinja("leader_YoungNinja", Point(3, 3));
+    Team team1(leader_YoungNinja);
+    team1.add(ninja1);
+    team1.add(ninja2);
+    team1.add(ninja3);
+    CHECK(team1.stillAlive() == 4);
+
+
+
+    Cowboy *cowboy1 = new Cowboy("Cowboy1", Point(0, 0));
+    Cowboy *cowboy2 = new Cowboy("Cowboy2", Point(1, 1));
+    Cowboy *cowboy3 = new Cowboy("Cowboy3", Point(2, 2));
+    Cowboy *leader_cowboy = new Cowboy("LeaderCowboy", Point(3, 3));
+    Team team2(leader_cowboy);
+    team2.add(cowboy1);
+    team2.add(cowboy2);
+    team2.add(cowboy3);
+    CHECK(team2.stillAlive() == 4);
+    team1.attack(&team2);
+
+    REQUIRE(team2.stillAlive() < 4);
+    REQUIRE(team1.stillAlive() == 4);
+
+    // Test print function
+    team1.print();
 }

@@ -8,7 +8,7 @@ bool Character::isAlive() {
     return false;
 }
 
-double Character::distance(const Character &) {
+double Character::distance(const Character *) {
     return 0;
 }
 
