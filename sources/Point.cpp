@@ -20,3 +20,15 @@ Point Point::moveTowards(Point src, Point dest ,double distance) {
 Point::Point() {
 
 }
+
+double Point::getX() const {
+    return 0;
+}
+
+double Point::getY() const {
+    return 0;
+}
+
+void Point::print() {
+
+}

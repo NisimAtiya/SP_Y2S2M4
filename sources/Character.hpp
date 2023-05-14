@@ -15,14 +15,13 @@ class Character {
     string name_;
         Point location_;
         int hit_points_;
-        void(*print_fanc);
-        void(*create);
+
 
 
     public:
         Character();
         bool isAlive();
-        double distance(const Character&);
+        double distance(const Character *);
         void hit(int);
         string getName();
         Point getLocation();
