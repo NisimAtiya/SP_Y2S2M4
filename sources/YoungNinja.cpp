@@ -5,6 +5,6 @@
 #include "YoungNinja.hpp"
 
 
-YountNinja::YountNinja(string name, Point locetion) : Ninja(name, locetion){
+YoungNinja::YoungNinja(string name, Point locetion) : Ninja(name, locetion){
 
 }

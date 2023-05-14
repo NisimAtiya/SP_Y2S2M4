@@ -6,9 +6,9 @@
 #define SP_Y2S2M4_YOUNGNINJA_HPP
 #include "Ninja.hpp"
 
-class YountNinja : public Ninja{
+class YoungNinja : public Ninja{
 public:
-    YountNinja(string name, Point location);
+    YoungNinja(string name, Point location);
 
 };
 
