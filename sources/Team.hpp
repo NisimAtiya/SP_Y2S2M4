@@ -14,7 +14,7 @@ using namespace std;
 
 class Team {
     private:
-        Character leader_;
+        Character *leader_;
         vector<Ninja> Ninja_grup_;
         vector<Cowboy> Cowboy_gru_;
     public:
