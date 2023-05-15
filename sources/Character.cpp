@@ -29,6 +29,4 @@ string Character::print() {
 
 }
 
-Character::Character() {
 
-}

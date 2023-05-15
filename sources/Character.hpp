@@ -12,21 +12,20 @@ using namespace std;
 
 class Character {
     private:
-    string name_;
+        string name_;
         Point location_;
         int hit_points_;
 
 
 
     public:
-        Character();
-        bool isAlive();
-        double distance(const Character *);
-        void hit(int);
-        string getName();
-        Point getLocation();
-
-    virtual string print();
+        Character(string name, Point location,int hit_points):name_(name), location_(location),hit_points_(hit_points){}
+        virtual bool isAlive()=0;
+        virtual double distance(const Character *)=0;
+        virtual void hit(int)=0;
+        virtual string getName()=0;
+        virtual Point getLocation()=0;
+        virtual string print()=0;
 
 };
 
