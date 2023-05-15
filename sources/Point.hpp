@@ -13,11 +13,10 @@ class Point {
         double y_;
     public:
         Point(double ,double );
-        Point();
         double getX() const;
         double getY() const;
-        double distance(Point);
-        Point moveTowards(Point,Point ,double );
+        double distance(Point const);
+        static Point moveTowards(Point, Point , double );
         void print();
 
 };
