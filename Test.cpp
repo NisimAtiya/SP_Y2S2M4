@@ -86,7 +86,7 @@ TEST_CASE("Test on  functions of YoungNinja"){
     CHECK(c1->distance(c2)==0);
     CHECK(c1->getName()=="nisim");
 }
-TEST_CASE("Test on the functions of YoungNinja that do not throw errors"){
+TEST_CASE("Test on the functions of TrainedNinja that do not throw errors"){
     TrainedNinja *c1 = new TrainedNinja("nisim",Point(1,0));
     TrainedNinja *c2 = new TrainedNinja("yosi",Point(1,0));
     CHECK_NOTHROW(c1->isAlive());
@@ -99,7 +99,7 @@ TEST_CASE("Test on the functions of YoungNinja that do not throw errors"){
     CHECK_NOTHROW(c1->Print());
 
 }
-TEST_CASE("Test on  functions of YoungNinja"){
+TEST_CASE("Test on  functions of TrainedNinja"){
     TrainedNinja *c1 = new TrainedNinja("nisim",Point(1,0));
     TrainedNinja *c2 = new TrainedNinja("yosi",Point(1,0));
 
@@ -107,7 +107,7 @@ TEST_CASE("Test on  functions of YoungNinja"){
     CHECK(c1->distance(c2)==0);
     CHECK(c1->getName()=="nisim");
 }
-TEST_CASE("Test on the functions of YoungNinja that do not throw errors"){
+TEST_CASE("Test on the functions of OldNinja that do not throw errors"){
     OldNinja *c1 = new OldNinja("nisim",Point(1,0));
     OldNinja *c2 = new OldNinja("yosi",Point(1,0));
     CHECK_NOTHROW(c1->isAlive());
@@ -120,7 +120,7 @@ TEST_CASE("Test on the functions of YoungNinja that do not throw errors"){
     CHECK_NOTHROW(c1->Print());
 
 }
-TEST_CASE("Test on  functions of YoungNinja"){
+TEST_CASE("Test on  functions of OldNinja"){
     OldNinja *c1 = new OldNinja("nisim",Point(1,0));
     OldNinja *c2 = new OldNinja("yosi",Point(1,0));
 
