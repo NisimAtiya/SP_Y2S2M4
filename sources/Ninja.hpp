@@ -8,15 +8,15 @@
 
 
 class Ninja : public Character{
-    private:
+    protected:
         int speed_;
     public:
 
-        Ninja(string,Point);
-        void move(const Character*);
-        void slash( Character*);
-        string Print();
-        ~Ninja();
+        Ninja(string name ,Point location,int hit_points, int speed): Character(name,location,hit_points),speed_(speed){}
+        void move(Character *);
+        void slash( Character *);
+        string print();
+
 };
 
 

@@ -9,15 +9,15 @@
 
 
 class Cowboy : public Character{
-private:
-    int amount_balls_;
-public:
-    Cowboy(string name,Point location):Character(name,location,110),amount_balls_(6){}
-    void shoot(Character*);
-    bool hasboolets() const{return amount_balls_>=6;}
-    void reload(){amount_balls_=6;}
+    private:
+        int amount_balls_;
+    public:
+        Cowboy(string name,Point location):Character(name,location,110),amount_balls_(6){}
+        void shoot(Character*);
+        bool hasboolets() const{return amount_balls_>=6;}
+        void reload(){amount_balls_=6;}
     int getAmountBalls(){return amount_balls_;}
-    string print();
+        string print();
 
 
 
