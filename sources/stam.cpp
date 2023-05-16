@@ -3,6 +3,9 @@
 #include "Cowboy.hpp"
 #include "Character.hpp"
 #include "Ninja.hpp"
+#include "YoungNinja.hpp"
+#include "TrainedNinja.hpp"
+#include "OldNinja.hpp"
 
 using namespace std;
 
@@ -32,25 +35,73 @@ int main() {
 //    cout<<nisim->getAmountBalls()<<endl;
 //    nisim->reload();
 //    cout<<nisim->getAmountBalls()<<endl;
-    Ninja *tom = new Ninja("Tom", a,100,14);
+
+
+
+
+//    Ninja *tom = new Ninja("Tom", a,100,14);
+//    cout<<tom->getLocation().toString()<<endl;
+//    cout<<tom->getName()<<endl;
+//    cout<<tom->getHitPoints()<<endl;
+//    cout<<tom->isAlive()<<endl;
+//    tom->hit(10);
+//    cout<<tom->getHitPoints()<<endl;
+//    Ninja *nisim = new Ninja("Nisim", b,100,14);
+//    nisim->slash(tom);
+//    cout<<tom->getHitPoints()<<endl;
+//    cout<<nisim->print()<<endl;
+//    nisim->move(tom);
+//    nisim->slash(tom);
+//    cout<<tom->getHitPoints()<<endl;
+
+
+//    YoungNinja *tom = new YoungNinja("Tom", a);
+//    cout<<tom->getLocation().toString()<<endl;
+//    cout<<tom->getName()<<endl;
+//    cout<<tom->getHitPoints()<<endl;
+//    cout<<tom->isAlive()<<endl;
+//    cout<<tom->getHitPoints()<<endl;
+//    YoungNinja *nisim = new YoungNinja("Nisim", b);
+//    nisim->slash(tom);
+//    cout<<tom->getHitPoints()<<endl;
+//    cout<<nisim->print()<<endl;
+//    nisim->move(tom);
+//    nisim->slash(tom);
+//    cout<<tom->getHitPoints()<<endl;
+
+
+
+//    TrainedNinja *tom = new TrainedNinja("Tom", a);
+//    cout<<tom->getLocation().toString()<<endl;
+//    cout<<tom->getName()<<endl;
+//    cout<<tom->getHitPoints()<<endl;
+//    cout<<tom->isAlive()<<endl;
+//    cout<<tom->getHitPoints()<<endl;
+//    TrainedNinja *nisim = new TrainedNinja("Nisim", b);
+//    nisim->slash(tom);
+//    cout<<tom->getHitPoints()<<endl;
+//    cout<<nisim->print()<<endl;
+//    nisim->move(tom);
+//    nisim->slash(tom);
+//    cout<<tom->getHitPoints()<<endl;
+
+
+
+
+
+    OldNinja *tom = new OldNinja("Tom", a);
     cout<<tom->getLocation().toString()<<endl;
     cout<<tom->getName()<<endl;
     cout<<tom->getHitPoints()<<endl;
     cout<<tom->isAlive()<<endl;
-    tom->hit(10);
     cout<<tom->getHitPoints()<<endl;
-    Ninja *nisim = new Ninja("Nisim", b,100,14);
+    OldNinja *nisim = new OldNinja("Nisim", b);
     nisim->slash(tom);
     cout<<tom->getHitPoints()<<endl;
     cout<<nisim->print()<<endl;
     nisim->move(tom);
     nisim->slash(tom);
     cout<<tom->getHitPoints()<<endl;
-
-
-
-
-
 
 
 
