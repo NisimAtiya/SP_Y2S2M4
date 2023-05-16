@@ -98,7 +98,7 @@ int main() {
     OldNinja *nisim = new OldNinja("Nisim", b);
     nisim->slash(tom);
     cout<<tom->getHitPoints()<<endl;
-    cout<<nisim->print()<<endl;
+    cout<<nisim->Print()<<endl;
     nisim->move(tom);
     nisim->slash(tom);
     cout<<tom->getHitPoints()<<endl;

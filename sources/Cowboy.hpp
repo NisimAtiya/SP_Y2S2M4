@@ -16,7 +16,7 @@ class Cowboy : public Character{
         void shoot(Character*);
         bool hasboolets() const{return amount_balls_>=6;}
         void reload(){amount_balls_=6;}
-    int getAmountBalls(){return amount_balls_;}
+        int getAmountBalls(){return amount_balls_;}
         string print();
 
 

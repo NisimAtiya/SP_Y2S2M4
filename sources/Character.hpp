@@ -15,18 +15,22 @@ class Character {
         string name_;
         Point location_;
         int hit_points_;
+        bool inTeam_;
 
 
 
     public:
         Character(string name, Point location,int hit_points):
-        name_(name), location_(location),hit_points_(hit_points){}
+        name_(name), location_(location),hit_points_(hit_points),inTeam_(false){}
          Point getLocation(){return location_;}
          string getName(){return name_;}
-         int getHitPoints(){return hit_points_;}
-         bool isAlive(){return hit_points_>0;}
+         int getHitPoints() const{return hit_points_;}
+         bool isAlive() const{return hit_points_>0;}
          double distance(Character *other){return location_.distance(other->getLocation());}
-         void hit(int);
+        void hit(int hit) {
+            if (!isAlive()) return;
+            hit_points_-=hit;
+        }
         virtual string print(){
             if (isAlive()){
                 return " name: " + getName() + ", hit points: "  + to_string(getHitPoints()) +", location: " + getLocation().toString();
@@ -34,7 +38,9 @@ class Character {
             }
             return " name: (" + getName() + "), location: " + getLocation().toString();
         }
-
+        bool getInTeam() const{ return inTeam_;}
+        void setInTeam(bool boolean){inTeam_=boolean;}
+        virtual ~Character() = default;
 };
 
 
