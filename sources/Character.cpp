@@ -4,29 +4,14 @@
 
 #include "Character.hpp"
 
-bool Character::isAlive() {
-    return false;
+
+
+void Character::hit(int hit) {
+    if (!isAlive()) return;
+    hit_points_-=hit;
 }
 
-double Character::distance(const Character *) {
-    return 0;
-}
 
-void Character::hit(int) {
 
-}
-
-string Character::getName() {
-    return std::string();
-}
-
-Point Character::getLocation() {
-    return Point(0, 0);
-}
-
-string Character::print() {
-    return "";
-
-}
 
 
