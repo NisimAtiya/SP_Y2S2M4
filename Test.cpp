@@ -52,7 +52,7 @@ TEST_CASE("Test on the functions of Cowboy that do not throw errors"){
     CHECK_NOTHROW(c1->getLocation());
     CHECK_NOTHROW(c1->shoot(c2));
     CHECK_NOTHROW(c1->reload());
-    CHECK_NOTHROW(c1->print());
+    CHECK_NOTHROW(c1->Print());
     CHECK_NOTHROW(c1->hasboolets());
 
 }
@@ -75,7 +75,7 @@ TEST_CASE("Test on the functions of YoungNinja that do not throw errors"){
     CHECK_NOTHROW(c1->getLocation());
     CHECK_NOTHROW(c1->slash(c2));
     CHECK_NOTHROW(c1->move(c2));
-    CHECK_NOTHROW(c1->print());
+    CHECK_NOTHROW(c1->Print());
 
 }
 TEST_CASE("Test on  functions of YoungNinja"){
@@ -96,7 +96,7 @@ TEST_CASE("Test on the functions of TrainedNinja that do not throw errors"){
     CHECK_NOTHROW(c1->getLocation());
     CHECK_NOTHROW(c1->slash(c2));
     CHECK_NOTHROW(c1->move(c2));
-    CHECK_NOTHROW(c1->print());
+    CHECK_NOTHROW(c1->Print());
 
 }
 TEST_CASE("Test on  functions of TrainedNinja"){
@@ -117,7 +117,7 @@ TEST_CASE("Test on the functions of OldNinja that do not throw errors"){
     CHECK_NOTHROW(c1->getLocation());
     CHECK_NOTHROW(c1->slash(c2));
     CHECK_NOTHROW(c1->move(c2));
-    CHECK_NOTHROW(c1->print());
+    CHECK_NOTHROW(c1->Print());
 
 }
 TEST_CASE("Test on  functions of OldNinja"){

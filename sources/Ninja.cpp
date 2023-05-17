@@ -3,22 +3,26 @@
 //
 
 #include "Ninja.hpp"
-Ninja::Ninja(string, Point) {
 
+
+
+void Ninja::move(Character *other) {
+    Point new_location = Point::moveTowards(location_,other->getLocation(),speed_);
+    location_ = new_location;
 }
 
-void Ninja::move(const Character *) {
+void Ninja::slash( Character *other) {
+    if(!other->isAlive()){
+        throw runtime_error("The enemy is dead!!");
+    }
+    double distance = location_.distance(other->getLocation());
+    if(isAlive() && distance <=1){
+        other->hit(40);
+    }
 
 }
-
-void Ninja::slash( Character *) {
-
-}
-
-
-
 
 
 string Ninja::print() {
-    return "";
+    return "N-" + Character::print();
 }

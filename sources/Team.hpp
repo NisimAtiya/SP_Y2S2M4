@@ -13,23 +13,17 @@
 using namespace std;
 
 class Team {
-    private:
-        Character leader_;
-        vector<Ninja> Ninja_grup_;
-        vector<Cowboy> Cowboy_gru_;
+    protected:
+        Character *leader_;
+        vector<Character*> vector_team_;
     public:
-        Team(const Ninja*);
-        Team(const Cowboy*);
-        void add(const Character*);
-        void attack(Team*);
+        Team(Character *leader):leader_(leader){}
+        void add(Character*);
+        virtual void attack(Team*);
         int stillAlive();
-        void print();	
-	Team() = default;
-	Team(const Team& other) = default;
-	Team& operator=(const Team& other) = default;
-	Team(Team&& other) = default;
-	Team& operator=(Team&& other) = default;
-	~Team() = default;
+        void print();
+        void setLeader(Character *newLeader){leader_= newLeader;}
+        ~Team();
 
 
 

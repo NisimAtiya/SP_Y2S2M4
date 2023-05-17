@@ -10,21 +10,14 @@
 
 class Cowboy : public Character{
     private:
-        int amount_balls=0;
+        int amount_balls_;
     public:
-        Cowboy(string,Point);
+        Cowboy(string name,Point location):Character(name,location,110),amount_balls_(6){}
         void shoot(Character*);
-        bool hasboolets();
-        void reload();
-        Cowboy() = default;
-	Cowboy(const Cowboy& other) = default;
-	Cowboy& operator=(const Cowboy& other) = default;
-	Cowboy(Cowboy&& other) = default;
-	Cowboy& operator=(Cowboy&& other) = default;
-	string print() override;
-	    ~Cowboy() override = default;
-
-
+        bool hasboolets() const{return amount_balls_>=6;}
+        void reload(){amount_balls_=6;}
+        int getAmountBalls(){return amount_balls_;}
+        string print();
 
 
 
