@@ -8,14 +8,21 @@
 
 
 class Ninja : public Character{
-    protected:
-        int speed_;
+    private:
+        int speed_=0;
     public:
 
-        Ninja(string name ,Point location,int hit_points, int speed): Character(name,location,hit_points),speed_(speed){}
-        void move(Character *);
-        void slash( Character *);
-        string print();
+        Ninja(string,Point);
+        void move(const Character*);
+        void slash( Character*);
+	Ninja() = default;
+	Ninja(const Ninja& other) = default;
+	Ninja& operator=(const Ninja& other) = default;
+	Ninja(Ninja&& other) = default;
+	Ninja& operator=(Ninja&& other) = default;
+	string print() override;
+	~Ninja() override = default;
+
 
 };
 
