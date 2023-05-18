@@ -58,7 +58,7 @@ void Team2::print() {
     size_t team_size = vector_team_.size();
     // Iterate over the team members  of Cowboy
     for (int i = 0; i < team_size; ++i) {
-        cout<<this->getTeamMembers().at(i)->print()<<endl;  // Print team member's information
+        cout<<this->getTeamMembers()[i]->print()<<endl;  // Print team member's information
     }
 }
 
@@ -69,12 +69,12 @@ Character *Team2::getClosest(Team *other) {
 
     // Iterate over the team members
     for (int i = 0; i < team_size; ++i) {
-        double tempDistance = other->getTeamMembers().at(i)->distance(this->getLeader());
-        if (other->getTeamMembers().at(i)->isAlive() && tempDistance < minDistance) {
+        double tempDistance = other->getTeamMembers()[i]->distance(this->getLeader());
+        if (other->getTeamMembers()[i]->isAlive() && tempDistance < minDistance) {
             minDistance = tempDistance;
             j = i;
         }
     }
     // Return the closest living team member
-    return other->getTeamMembers().at(j);
+    return other->getTeamMembers()[j];
 }
