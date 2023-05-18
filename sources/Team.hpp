@@ -14,16 +14,40 @@ using namespace std;
 
 class Team {
     protected:
-        Character *leader_;
+        int size_;
+        Character* leader_;
         vector<Character*> vector_team_;
-    public:
-        Team(Character *leader):leader_(leader){}
+
+public:
+        Team(Character *leader){
+            // Check if the character already belongs to a team
+            if (leader->getInTeam()) {
+                throw runtime_error("Character belongs to a team!!!");
+            }
+
+            // Add the character to the team
+            vector_team_.push_back(leader);
+
+            // Set the 'inTeam' flag of the 'other' character to true
+            leader->setInTeam(true);
+            size_=1;
+            leader_=leader;
+        }
+        Character* getLeader() {return leader_;}
         void add(Character*);
         virtual void attack(Team*);
         int stillAlive();
-        void print();
+        virtual void print();
         void setLeader(Character *newLeader){leader_= newLeader;}
         ~Team();
+        virtual Character* getClosest(Team *other);
+        Character* getNewLeader();
+        vector<Character*> getTeamMembers() {return vector_team_;}
+        void setSize(int size){size_ = size;}
+        int getSize(){return size_;}
+
+
+
 
 
 

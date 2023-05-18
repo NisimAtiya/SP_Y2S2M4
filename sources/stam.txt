@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Point.hpp"
 #include "Cowboy.hpp"
 #include "Character.hpp"
@@ -6,11 +5,12 @@
 #include "YoungNinja.hpp"
 #include "TrainedNinja.hpp"
 #include "OldNinja.hpp"
-
+#include "Team.hpp"
+#include <iostream>
 using namespace std;
 
 int main() {
-    Point a(1,0),b(1,3);
+//    Point a(1,0),b(1,3);
 //    cout<<"The x-coordinate of point A: "<< a.getX()<<endl;
 //    cout<<"The x-coordinate of point B: "<< b.getY()<<endl;
 //    cout<<"The distance between point a and point b is: " <<a.distance(b)<<endl;
@@ -18,7 +18,6 @@ int main() {
 //    Point d = Point::moveTowards(a,b,1);
 //    c.print();
 //    d.print();
-//~Character();
 
 
 //    Cowboy *tom = new Cowboy("Tom", a);
@@ -89,19 +88,75 @@ int main() {
 
 
 
-    OldNinja *tom = new OldNinja("Tom", a);
-    cout<<tom->getLocation().toString()<<endl;
-    cout<<tom->getName()<<endl;
-    cout<<tom->getHitPoints()<<endl;
-    cout<<tom->isAlive()<<endl;
-    cout<<tom->getHitPoints()<<endl;
-    OldNinja *nisim = new OldNinja("Nisim", b);
-    nisim->slash(tom);
-    cout<<tom->getHitPoints()<<endl;
-    cout<<nisim->Print()<<endl;
-    nisim->move(tom);
-    nisim->slash(tom);
-    cout<<tom->getHitPoints()<<endl;
+//    OldNinja *tom = new OldNinja("Tom", a);
+//    cout<<tom->getLocation().toString()<<endl;
+//    cout<<tom->getName()<<endl;
+//    cout<<tom->getHitPoints()<<endl;
+//    cout<<tom->isAlive()<<endl;
+//    cout<<tom->getHitPoints()<<endl;
+//    OldNinja *nisim = new OldNinja("Nisim", b);
+//    nisim->slash(tom);
+//    cout<<tom->getHitPoints()<<endl;
+//    cout<<nisim->print()<<endl;
+//    nisim->move(tom);
+//    nisim->slash(tom);
+//    cout<<tom->getHitPoints()<<endl;
+// Create some characters
+
+    Point a(1,0),b(1,3),c(2,4),d(23,3),e(0,0),f(3,7),g(1,9);
+
+    Cowboy* cowboy1 = new Cowboy("John", a);
+    Cowboy* cowboy2 = new Cowboy("Mike", b);
+    OldNinja* ninja1 = new OldNinja("Ryu", c);
+    OldNinja* ninja2 = new OldNinja("Hanzo", d);
+
+    // Create a team and set the leader
+    Team team(cowboy1);
+    team.add(cowboy2);
+    team.add(ninja1);
+    team.add(ninja2);
+
+    // Print the team's members
+    team.print();
+    cout<<"\n";
+
+
+
+    // Perform an attack on another team
+    Cowboy* enemyCowboy1 = new Cowboy("Jake", e);
+    Cowboy* enemyCowboy2 = new Cowboy("Tom", f);
+    OldNinja* enemyNinja1 = new OldNinja("Ken", g);
+
+    Team enemyTeam(enemyCowboy1);
+    enemyTeam.add(enemyCowboy2);
+    enemyTeam.add(enemyNinja1);
+
+    enemyTeam.print();
+
+    cout<<"\n";
+    team.attack(&enemyTeam);
+
+    // Print the updated team's members after the attack
+    enemyTeam.print();
+
+    // Cleanup
+    delete cowboy1;
+    delete cowboy2;
+    delete ninja1;
+    delete ninja2;
+    delete enemyCowboy1;
+    delete enemyCowboy2;
+    delete enemyNinja1;
+
+
+
+
+
+
+
+
+
+    return 0;
 
 
 

@@ -3,7 +3,8 @@
 //
 
 #include "Team.hpp"
-
+#include <iostream>
+using namespace std;
 void Team::add(Character *other) {
     // Check if the character already belongs to a team
     if (other->getInTeam()) {
@@ -11,7 +12,7 @@ void Team::add(Character *other) {
     }
 
     // Check if the team is already full
-    if (vector_team_.size() >= 9) {
+    if (size_ > 10) {
         throw runtime_error("The team is full!!!");
     }
 
@@ -20,26 +21,81 @@ void Team::add(Character *other) {
 
     // Set the 'inTeam' flag of the 'other' character to true
     other->setInTeam(true);
+    size_++;
 }
 
 
-void Team::attack(Team *other_team) {
+void Team::attack(Team* other_team) {
+    // Checking that there is someone to attack
+    if (other_team->stillAlive() == 0) return;
 
+    // Checking that I can attack
+    if (this->stillAlive() == 0) return;
+
+    // Checking that I'm not attacking myself
+    if (leader_ == other_team->getLeader()) {
+        throw runtime_error("You are trying to attack yourself!!!");
+    }
+
+    // Check if the leader of the attacking team is alive and if not replace him with the player closest to him
+    if (!leader_->isAlive()) {
+        leader_ = this->getNewLeader();
+    }
+
+    // Find the victim from the enemy group
+    Character* victim = this->getClosest(other_team);
+
+    // Attack the chosen victim with all the Cowboys
+    for (Character* character : vector_team_) {
+        // Check if the victim is dead
+        if (!victim->isAlive()) {
+            if (other_team->stillAlive() == 0) return;
+            // Choose a new victim, the living enemy character closest to the leader
+            victim = this->getClosest(other_team);
+        } else if (character->isAlive()) {
+            auto* cowboy = dynamic_cast<Cowboy*>(character);
+            if (cowboy != nullptr) {
+                if (cowboy->hasboolets()) {
+                    cowboy->shoot(victim);
+                } else {
+                    cowboy->reload();
+                }
+            }
+        }
+    }
+
+    // Attack the chosen victim with all the Ninjas
+    for (Character* character : vector_team_) {
+        // Check if the victim is dead
+        if (!victim->isAlive()) {
+            if (other_team->stillAlive() == 0) return;
+            victim = this->getClosest(other_team);
+        } else if (character->isAlive()) {
+            auto* ninja = dynamic_cast<Ninja*>(character);
+            if (ninja != nullptr) {
+                if (ninja->distance(victim) <= 1) {
+                    ninja->slash(victim);
+                } else {
+                    ninja->move(victim);
+                }
+            }
+        }
+    }
 }
+
+
+
+
 
 int Team::stillAlive() {
     int cnt = 0;
 
-    // Check if the leader is alive
-    if (leader_->isAlive())
-        cnt++;  // Increment count if the leader is alive
-
-    int team_size = vector_team_.size();
+    size_t team_size = vector_team_.size();
 
     // Iterate over the team members
     for (int i = 0; i < team_size; ++i) {
         // Check if the team member is alive
-        if (vector_team_[i]->isAlive())
+        if (vector_team_.at(i)->isAlive())
             cnt++;  // Increment count if the team member is alive
     }
 
@@ -48,51 +104,97 @@ int Team::stillAlive() {
 
 
 void Team::print() {
-    int team_size = vector_team_.size();
     Ninja* ninjaPtr = nullptr;
     Cowboy* cowboyPtr = nullptr;
 
-    // Check if the leader is a Cowboy
-    cowboyPtr = dynamic_cast<Cowboy*>(leader_);
-    if (cowboyPtr) {
-        leader_->Print();  // Print leader's information (Cowboy-specific)
-    }
+
+    size_t team_size = vector_team_.size();
 
     // Iterate over the team members  of Cowboy
     for (int i = 0; i < team_size; ++i) {
         // Check if the team member is a Cowboy
-        cowboyPtr = dynamic_cast<Cowboy*>(vector_team_[i]);
+        cowboyPtr = dynamic_cast<Cowboy*>(vector_team_.at(i));
         if (cowboyPtr) {
-            vector_team_[i]->Print();  // Print team member's information (Cowboy-specific)
+            cout<<vector_team_.at(i)->print()<<endl;  // Print team member's information (Cowboy-specific)
         }
     }
 
     // Iterate over the team members of Ninja
     for (int i = 0; i < team_size; ++i) {
         // Check if the team member is a Ninja
-        ninjaPtr = dynamic_cast<Ninja*>(vector_team_[i]);
+        ninjaPtr = dynamic_cast<Ninja*>(vector_team_.at(i));
         if (ninjaPtr) {
-            vector_team_[i]->Print();  // Print team member's information (Ninja-specific)
+            cout<<vector_team_.at(i)->print()<<endl;  // Print team member's information (Ninja-specific)
         }
     }
 
-    // Check if the leader is a Ninja
-    ninjaPtr = dynamic_cast<Ninja*>(leader_);
-    if (ninjaPtr) {
-        leader_->Print();  // Print leader's information (Ninja-specific)
-    }
+
 }
 
 
 Team::~Team() {
-    int team_size = vector_team_.size();
+    // Clear the vector to remove all elements
+    vector_team_.clear();
 
-    // Destruct team members
+    // Set the leader pointer to null
+    leader_ = nullptr;
+}
+
+Character* Team::getClosest(Team *other) {
+    Ninja* ninjaPtr = nullptr;
+    Cowboy* cowboyPtr = nullptr;
+    double minDistance = numeric_limits<double>::max();
+    int j = 0;
+
+    size_t team_size = other->getTeamMembers().size();
+
+    // Iterate over the team members of Cowboys
     for (int i = 0; i < team_size; ++i) {
-        vector_team_[i]->~Character();  // Explicitly call the destructor of each team member
+        // Check if the team member is a Cowboy
+        cowboyPtr = dynamic_cast<Cowboy*>(other->getTeamMembers().at(i));
+        double tempDistance = other->getTeamMembers().at(i)->distance(leader_);
+        if (cowboyPtr && cowboyPtr->isAlive() && tempDistance < minDistance) {
+            minDistance = tempDistance;
+            j = i;
+        }
     }
 
-    // Destruct leader
-    leader_->~Character();  // Explicitly call the destructor of the leader
+    // Iterate over the team members of Ninjas
+    for (int i = 0; i < team_size; ++i) {
+        // Check if the team member is a Ninja
+        ninjaPtr = dynamic_cast<Ninja*>(other->getTeamMembers().at(i));
+        double tempDistance = other->getTeamMembers().at(i)->distance(leader_);
+        if (ninjaPtr && ninjaPtr->isAlive() && tempDistance < minDistance) {
+            minDistance = tempDistance;
+            j = i;
+        }
+    }
+
+    // Return the closest living team member
+    return other->getTeamMembers().at(j);
 }
+
+Character* Team::getNewLeader() {
+    if (leader_->isAlive()) {
+        return leader_; // If the current leader is alive, return the current leader
+    }
+
+    double minDistance = numeric_limits<double>::max();
+    Character* newLeader = nullptr;
+
+    for (Character* character : vector_team_) {
+        if (character->isAlive()) {
+            double distance = character->distance(leader_);
+            if (distance < minDistance && leader_!=character) {
+                minDistance = distance;
+                newLeader = character;
+            }
+        }
+    }
+
+    return newLeader;
+}
+
+
+
 

@@ -19,7 +19,7 @@ void Cowboy::shoot(Character *other) {
 
 
 string Cowboy::print() {
-    return "c" + Character::print();
+    return "C-" + Character::print();
 }
 
 

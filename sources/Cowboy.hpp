@@ -14,7 +14,7 @@ class Cowboy : public Character{
     public:
         Cowboy(string name,Point location):Character(name,location,110),amount_balls_(6){}
         void shoot(Character*);
-        bool hasboolets() const{return amount_balls_>=6;}
+        bool hasboolets() const{return amount_balls_>0;}
         void reload(){amount_balls_=6;}
         int getAmountBalls(){return amount_balls_;}
         string print();

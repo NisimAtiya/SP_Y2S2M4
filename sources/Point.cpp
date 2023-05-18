@@ -17,13 +17,20 @@ double Point::distance(const Point other) {
 }
 
 Point Point::moveTowards(Point p1, Point p2, double r) {
-    double distance = p1.distance(p2);
-    if (r>= distance){
-        return p2;
+
+    if (r < 0) {
+        throw std::invalid_argument("Distance cannot be a negative number");
     }
-    double x = p1.getX() + ((p2.getX() - p1.getX()) * r / distance);
-    double y = p1.getY() + ((p2.getY() - p1.getY()) * r / distance);
-    return Point(x,y);
+
+    double current_distance = p1.distance(p2);
+    if (current_distance <= r) {
+        return p2;
+    } else {
+        double temp = r / current_distance;
+        double new_x = p1.getX() + (temp * (p1.getX() - p2.getX()));
+        double new_y = p1.getY() + (temp * (p1.getY() - p2.getY()));
+        return Point(new_x, new_y);
+    }
 }
 
 string Point::toString() {
