@@ -6,6 +6,7 @@ using namespace std;
 
 
 
+
 void Cowboy::shoot(Character *other) {
     if(!other->isAlive()){
         throw runtime_error("The enemy is dead!!");

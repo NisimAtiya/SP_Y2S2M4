@@ -6,6 +6,8 @@
 #define SP_Y2S2M4_CHARACTER_HPP
 #include <string>
 #include "Point.hpp"
+#include <stdexcept>
+
 
 using namespace std;
 
