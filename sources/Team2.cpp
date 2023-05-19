@@ -57,18 +57,18 @@ void Team2::attack(Team *other_team) {
 void Team2::print() {
     size_t team_size = vector_team_.size();
     // Iterate over the team members  of Cowboy
-    for (int i = 0; i < team_size; ++i) {
+    for (size_t i = 0; i < team_size; ++i) {
         cout<<this->getTeamMembers().at(i)->print()<<endl;  // Print team member's information
     }
 }
 
 Character *Team2::getClosest(Team *other) {
     double minDistance = numeric_limits<double>::max();
-    int j = 0;
+    size_t j = 0;
     size_t team_size = other->getTeamMembers().size();
 
     // Iterate over the team members
-    for (int i = 0; i < team_size; ++i) {
+    for (size_t i = 0; i < team_size; ++i) {
         double tempDistance = other->getTeamMembers().at(i)->distance(this->getLeader());
         if (other->getTeamMembers().at(i)->isAlive() && tempDistance < minDistance) {
             minDistance = tempDistance;

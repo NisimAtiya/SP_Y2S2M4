@@ -93,7 +93,7 @@ int Team::stillAlive() {
     size_t team_size = vector_team_.size();
 
     // Iterate over the team members
-    for (int i = 0; i < team_size; ++i) {
+    for (size_t i = 0; i < team_size; ++i) {
         // Check if the team member is alive
         if (vector_team_.at(i)->isAlive())
             cnt++;  // Increment count if the team member is alive
@@ -111,7 +111,7 @@ void Team::print() {
     size_t team_size = vector_team_.size();
 
     // Iterate over the team members  of Cowboy
-    for (int i = 0; i < team_size; ++i) {
+    for (size_t i = 0; i < team_size; ++i) {
         // Check if the team member is a Cowboy
         cowboyPtr = dynamic_cast<Cowboy*>(vector_team_.at(i));
         if (cowboyPtr) {
@@ -120,7 +120,7 @@ void Team::print() {
     }
 
     // Iterate over the team members of Ninja
-    for (int i = 0; i < team_size; ++i) {
+    for (size_t i = 0; i < team_size; ++i) {
         // Check if the team member is a Ninja
         ninjaPtr = dynamic_cast<Ninja*>(vector_team_.at(i));
         if (ninjaPtr) {
@@ -144,12 +144,12 @@ Character* Team::getClosest(Team *other) {
     Ninja* ninjaPtr = nullptr;
     Cowboy* cowboyPtr = nullptr;
     double minDistance = numeric_limits<double>::max();
-    int j = 0;
+    size_t j = 0;
 
     size_t team_size = other->getTeamMembers().size();
 
     // Iterate over the team members of Cowboys
-    for (int i = 0; i < team_size; ++i) {
+    for (size_t i = 0; i < team_size; ++i) {
         // Check if the team member is a Cowboy
         cowboyPtr = dynamic_cast<Cowboy*>(other->getTeamMembers().at(i));
         double tempDistance = other->getTeamMembers().at(i)->distance(leader_);
@@ -160,7 +160,7 @@ Character* Team::getClosest(Team *other) {
     }
 
     // Iterate over the team members of Ninjas
-    for (int i = 0; i < team_size; ++i) {
+    for (size_t i = 0; i < team_size; ++i) {
         // Check if the team member is a Ninja
         ninjaPtr = dynamic_cast<Ninja*>(other->getTeamMembers().at(i));
         double tempDistance = other->getTeamMembers().at(i)->distance(leader_);
