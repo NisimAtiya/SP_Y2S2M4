@@ -4,9 +4,14 @@
 
 #include "Team2.hpp"
 #include <iostream>
+#include <limits>
+
 using namespace std;
 
 void Team2::attack(Team *other_team) {
+    if(other_team== nullptr){
+        throw invalid_argument("invalid argument");
+    }
     // Checking that there is someone to attack
     if (other_team->stillAlive() == 0) return;
 

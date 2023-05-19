@@ -4,6 +4,8 @@
 
 #include "Team.hpp"
 #include <iostream>
+#include <limits>
+
 using namespace std;
 void Team::add(Character *other) {
     // Check if the character already belongs to a team
@@ -12,7 +14,7 @@ void Team::add(Character *other) {
     }
 
     // Check if the team is already full
-    if (size_ > 10) {
+    if (size_ >= 10) {
         throw runtime_error("The team is full!!!");
     }
 
@@ -26,6 +28,9 @@ void Team::add(Character *other) {
 
 
 void Team::attack(Team* other_team) {
+    if(other_team== nullptr){
+        throw invalid_argument("invalid argument");
+    }
     // Checking that there is someone to attack
     if (other_team->stillAlive() == 0) return;
 

@@ -11,7 +11,10 @@ void Cowboy::shoot(Character *other) {
     if(!other->isAlive()){
         throw runtime_error("The enemy is dead!!");
     }
-    if(isAlive() && amount_balls_ > 0){
+    if(!this->isAlive()){
+        throw runtime_error("You're dead!!");
+    }
+    if( amount_balls_ > 0){
         other->hit(10);
         amount_balls_=amount_balls_-1;
     }

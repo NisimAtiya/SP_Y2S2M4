@@ -17,7 +17,6 @@ double Point::distance(const Point other) {
 }
 
 Point Point::moveTowards(Point p1, Point p2, double r) {
-
     if (r < 0) {
         throw std::invalid_argument("Distance cannot be a negative number");
     }
@@ -26,9 +25,9 @@ Point Point::moveTowards(Point p1, Point p2, double r) {
     if (current_distance <= r) {
         return p2;
     } else {
-        double temp = r / current_distance;
-        double new_x = p1.getX() + (temp * (p1.getX() - p2.getX()));
-        double new_y = p1.getY() + (temp * (p1.getY() - p2.getY()));
+        double ratio = r / current_distance;
+        double new_x = (1 - ratio) * p1.getX() + ratio * p2.getX();
+        double new_y = (1 - ratio) * p1.getY() + ratio * p2.getY();
         return Point(new_x, new_y);
     }
 }

@@ -15,8 +15,11 @@ void Ninja::slash( Character *other) {
     if(!other->isAlive()){
         throw runtime_error("The enemy is dead!!");
     }
+    if(!this->isAlive()){
+        throw runtime_error("You're dead!!");
+    }
     double distance = location_.distance(other->getLocation());
-    if(isAlive() && distance <=1){
+    if(distance <=1){
         other->hit(40);
     }
 
