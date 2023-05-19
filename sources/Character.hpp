@@ -31,7 +31,7 @@ public:
     double distance(Character *other){return location_.distance(other->getLocation());}
     void hit(int hit) {
         if(hit <=0){
-            throw runtime_error("hit must have a positive number");
+            throw invalid_argument("hit must have a positive number");
         }
         if (!isAlive()) return;
         hit_points_-=hit;

@@ -12,6 +12,9 @@ void Ninja::move(Character *other) {
 }
 
 void Ninja::slash( Character *other) {
+    if(other== this){
+        throw runtime_error("No self harm!!");
+    }
     if(!other->isAlive()){
         throw runtime_error("The enemy is dead!!");
     }

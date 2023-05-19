@@ -13,8 +13,9 @@ void Team2::attack(Team *other_team) {
         throw invalid_argument("invalid argument");
     }
     // Checking that there is someone to attack
-    if (other_team->stillAlive() == 0) return;
-
+    if (other_team->stillAlive() == 0) {
+        throw runtime_error("Attacking a dead team!!!");
+    }
     // Checking that I can attack
     if (this->stillAlive() == 0) return;
 

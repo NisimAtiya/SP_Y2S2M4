@@ -8,6 +8,9 @@ using namespace std;
 
 
 void Cowboy::shoot(Character *other) {
+    if(other== this){
+        throw runtime_error("No self harm!!");
+    }
     if(!other->isAlive()){
         throw runtime_error("The enemy is dead!!");
     }

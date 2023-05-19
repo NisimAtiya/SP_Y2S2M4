@@ -15,7 +15,11 @@ class Cowboy : public Character{
         Cowboy(string name,Point location):Character(name,location,110),amount_balls_(6){}
         void shoot(Character*);
         bool hasboolets() const{return amount_balls_>0;}
-        void reload(){amount_balls_=6;}
+        void reload(){
+            if(!isAlive()){
+                throw runtime_error("Dead cowboy can not reload!!!");
+            }
+            amount_balls_=6;}
         int getAmountBalls(){return amount_balls_;}
         string print();
 
