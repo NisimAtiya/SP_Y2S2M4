@@ -8,14 +8,14 @@
 
 
 class Ninja : public Character{
-    protected:
-        int speed_;
-    public:
+protected:
+    int speed_;
+public:
 
-        Ninja(string name ,Point location,int hit_points, int speed): Character(name,location,hit_points),speed_(speed){}
-        void move(Character *);
-        void slash( Character *);
-        string print() override;
+    Ninja(string name ,Point location,int hit_points, int speed): Character(name,location,hit_points),speed_(speed){}
+    void move(Character *);
+    void slash( Character *);
+    string print();
 
 };
 

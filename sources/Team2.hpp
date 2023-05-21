@@ -7,13 +7,13 @@
 
 #include "Team.hpp"
 class Team2 : public Team{
-    public:
-        Team2(Character *leader):Team(leader){
-            setSize(1);
-        }
-         void attack(Team*);
-         void print();
-         Character* getClosest(Team *other);
+public:
+    Team2(Character *leader):Team(leader){
+        setSize(1);
+    }
+    void attack(Team*);
+    void print();
+    Character* getClosest(Team *other);
 
 
 

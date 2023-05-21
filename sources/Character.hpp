@@ -26,8 +26,7 @@ public:
     Character& operator=(const Character& other) = default;  // Copy assignment operator
     Character(Character&& other) = default;  // Move constructor
     Character& operator=(Character&& other) = default;  // Move assignment operator
-
-    Character(string name, Point location, int hit_points)
+    Character(string name,  Point location, int hit_points)
             : name_(name), location_(location), hit_points_(hit_points), inTeam_(false) {}
     Point getLocation(){return location_;}
     string getName(){return name_;}

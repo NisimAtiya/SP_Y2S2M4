@@ -13,38 +13,38 @@
 using namespace std;
 
 class Team {
-    protected:
-        int size_;
-        Character* leader_;
-        vector<Character*> vector_team_;
+protected:
+    int size_;
+    Character* leader_;
+    vector<Character*> vector_team_;
 
 public:
-        Team(Character *leader){
-            // Check if the character already belongs to a team
-            if (leader->getInTeam()) {
-                throw runtime_error("Character belongs to a team!!!");
-            }
-            leader_=leader;
-            // Add the character to the team
-            vector_team_.push_back(leader);
-
-            // Set the 'inTeam' flag of the 'other' character to true
-            leader->setInTeam(true);
-            size_=1;
-
+    Team(Character *leader){
+        // Check if the character already belongs to a team
+        if (leader->getInTeam()) {
+            throw runtime_error("Character belongs to a team!!!");
         }
-        Character* getLeader() {return leader_;}
-        void add(Character*);
-        virtual void attack(Team*);
-        int stillAlive();
-        virtual void print();
-        void setLeader(Character *newLeader){leader_= newLeader;}
-        ~Team();
-        virtual Character* getClosest(Team *other);
-        Character* getNewLeader();
-        vector<Character*> getTeamMembers() {return vector_team_;}
-        void setSize(int size){size_ = size;}
-        int getSize(){return size_;}
+
+        // Add the character to the team
+        vector_team_.push_back(leader);
+
+        // Set the 'inTeam' flag of the 'other' character to true
+        leader->setInTeam(true);
+        size_=1;
+        leader_=leader;
+    }
+    Character* getLeader() {return leader_;}
+    void add(Character*);
+    virtual void attack(Team*);
+    int stillAlive();
+    virtual void print();
+    void setLeader(Character *newLeader){leader_= newLeader;}
+    ~Team();
+    virtual Character* getClosest(Team *other);
+    Character* getNewLeader();
+    vector<Character*> getTeamMembers() {return vector_team_;}
+    void setSize(int size){size_ = size;}
+    int getSize(){return size_;}
 
 
 

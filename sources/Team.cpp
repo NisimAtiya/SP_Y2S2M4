@@ -28,7 +28,7 @@ void Team::add(Character *other) {
 
 
 void Team::attack(Team* other_team) {
-    if(other_team == nullptr){
+    if(other_team== nullptr){
         throw invalid_argument("invalid argument");
     }
     // Checking that there is someone to attack
@@ -37,9 +37,7 @@ void Team::attack(Team* other_team) {
     }
 
     // Checking that I can attack
-    if (this->stillAlive() == 0) {
-        throw runtime_error("Dead team cant attack!!!");
-    }
+    if (this->stillAlive() == 0) return;
 
     // Checking that I'm not attacking myself
     if (leader_ == other_team->getLeader()) {
@@ -61,7 +59,7 @@ void Team::attack(Team* other_team) {
             if (other_team->stillAlive() == 0) return;
             // Choose a new victim, the living enemy character closest to the leader
             victim = this->getClosest(other_team);
-        } else if (character->isAlive()) {
+        }  if (character->isAlive()) {
             auto* cowboy = dynamic_cast<Cowboy*>(character);
             if (cowboy != nullptr) {
                 if (cowboy->hasboolets()) {
@@ -79,13 +77,14 @@ void Team::attack(Team* other_team) {
         if (!victim->isAlive()) {
             if (other_team->stillAlive() == 0) return;
             victim = this->getClosest(other_team);
-        } else if (character->isAlive()) {
+        }  if (character->isAlive()) {
             auto* ninja = dynamic_cast<Ninja*>(character);
             if (ninja != nullptr) {
                 if (ninja->distance(victim) <= 1) {
                     ninja->slash(victim);
                 } else {
                     ninja->move(victim);
+
                 }
             }
         }
@@ -99,11 +98,13 @@ void Team::attack(Team* other_team) {
 int Team::stillAlive() {
     int cnt = 0;
 
+    size_t team_size = vector_team_.size();
+
     // Iterate over the team members
-    for (Character* character : vector_team_) {
-        if (character->isAlive()) {
-            cnt++;
-        }
+    for (size_t i = 0; i < team_size; ++i) {
+        // Check if the team member is alive
+        if (vector_team_.at(i)->isAlive())
+            cnt++;  // Increment count if the team member is alive
     }
 
     return cnt;  // Return the total count of alive members
@@ -140,21 +141,21 @@ void Team::print() {
 
 
 Team::~Team() {
-    for (Character* character : vector_team_) {
-        delete character;
-    }
+    // Clear the vector to remove all elements
     vector_team_.clear();
-    leader_= nullptr;
+
+    // Set the leader pointer to null
+    leader_ = nullptr;
 }
 
+
 Character* Team::getClosest(Team *other) {
-    double minDistance = numeric_limits<double>::max();
+    double min_dis = numeric_limits<double>::max();
     Character* closest_enemy = nullptr;
     for (Character* character : other->getTeamMembers()){
         if(character->isAlive()){
-            double distance = leader_->distance(character);
-            if(distance<minDistance){
-                minDistance = distance;
+            if(this->getLeader()->distance(character)<min_dis){
+                min_dis = this->getLeader()->distance(character);
                 closest_enemy = character;
             }
         }
@@ -173,7 +174,7 @@ Character* Team::getNewLeader() {
     for (Character* character : vector_team_) {
         if (character->isAlive()) {
             double distance = character->distance(leader_);
-            if (distance < minDistance) {
+            if (distance < minDistance && leader_!=character) {
                 minDistance = distance;
                 newLeader = character;
             }
@@ -182,7 +183,6 @@ Character* Team::getNewLeader() {
 
     return newLeader;
 }
-
 
 
 
