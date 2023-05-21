@@ -12,10 +12,11 @@ private:
     int speed_;
 public:
 
-    Ninja(string name ,Point location,int hit_points, int speed): Character(name,location,hit_points),speed_(speed){}
+    Ninja(string name, Point location, int hit_points, int speed)
+            : Character(std::move(name), location, hit_points), speed_(speed) {}
     void move(Character *);
     void slash( Character *);
-    string print();
+    string print() override;
 
 };
 

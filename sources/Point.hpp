@@ -10,15 +10,15 @@ using namespace std;
 
 
 class Point {
-protected:
+private:
     double _x_;
     double _y_;
 public:
-    Point(double x=0 ,double y=0 ):
-            _x_(x),_y_(y){}
+    Point(double x_coordinate = 0, double y_coordinate = 0):
+            _x_(x_coordinate),_y_(y_coordinate){}
     double getX() const{return _x_;}
     double getY() const{return _y_;}
-    double distance(Point const);
+    double distance(Point);
     static Point moveTowards(Point, Point , double );
     void print();
     string toString();
