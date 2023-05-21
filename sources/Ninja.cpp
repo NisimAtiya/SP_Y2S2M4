@@ -7,8 +7,8 @@
 
 
 void Ninja::move(Character *other) {
-    Point new_location = Point::moveTowards(location_,other->getLocation(),speed_);
-    location_ = new_location;
+    Point new_location = Point::moveTowards(this->getLocation(),other->getLocation(),speed_);
+    this->setLocation( new_location);
 }
 
 void Ninja::slash( Character *other) {
@@ -21,7 +21,7 @@ void Ninja::slash( Character *other) {
     if(!this->isAlive()){
         throw runtime_error("You're dead!!");
     }
-    double distance = location_.distance(other->getLocation());
+    double distance = this->getLocation().distance(other->getLocation());
     if(distance <=1){
         other->hit(40);
     }

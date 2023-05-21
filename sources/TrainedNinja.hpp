@@ -4,11 +4,14 @@
 
 #ifndef SP_Y2S2M4_TRAINEDNINJA_HPP
 #define SP_Y2S2M4_TRAINEDNINJA_HPP
+const int LIFE_ = 120;
+const int SPEED_ = 12;
+
 #include "Ninja.hpp"
 
 class TrainedNinja : public Ninja{
 public:
-    TrainedNinja(string name, Point location) : Ninja(name, location,120,12){}
+    TrainedNinja(string name, Point location) : Ninja(name, location,LIFE_,SPEED_){}
 
 };
 

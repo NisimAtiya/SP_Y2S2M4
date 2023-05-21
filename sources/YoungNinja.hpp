@@ -4,11 +4,14 @@
 
 #ifndef SP_Y2S2M4_YOUNGNINJA_HPP
 #define SP_Y2S2M4_YOUNGNINJA_HPP
+
+const int LIFE = 100;
+const int SPEED = 14;
 #include "Ninja.hpp"
 
 class YoungNinja : public Ninja{
 public:
-    YoungNinja(string name, Point location) : Ninja(name, location,100,14){}
+    YoungNinja(string name, Point location) : Ninja(name, location,LIFE,SPEED){}
 
 };
 

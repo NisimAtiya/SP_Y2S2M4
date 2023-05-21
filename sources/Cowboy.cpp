@@ -2,6 +2,7 @@
 // Created by Nisim Atiya on 02/05/2023.
 //
 #include "Cowboy.hpp"
+#define DAMAGE 10
 using namespace std;
 
 
@@ -18,7 +19,7 @@ void Cowboy::shoot(Character *other) {
         throw runtime_error("You're dead!!");
     }
     if( amount_balls_ > 0){
-        other->hit(10);
+        other->hit(DAMAGE);
         amount_balls_=amount_balls_-1;
     }
 }

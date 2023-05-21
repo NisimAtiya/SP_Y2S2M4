@@ -13,7 +13,7 @@ void Point::print() {
 }
 
 double Point::distance(const Point other) {
-    return sqrt(pow((x_ - other.getX()), 2) + pow((y_ - other.getY()), 2));
+    return sqrt(pow((_x_ - other.getX()), 2) + pow((_y_ - other.getY()), 2));
 }
 
 Point Point::moveTowards(Point p1, Point p2, double r) {

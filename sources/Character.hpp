@@ -13,7 +13,7 @@ using namespace std;
 
 
 class Character {
-protected:
+private:
     string name_;
     Point location_;
     int hit_points_;
@@ -26,8 +26,8 @@ public:
     Character& operator=(const Character& other) = default;  // Copy assignment operator
     Character(Character&& other) = default;  // Move constructor
     Character& operator=(Character&& other) = default;  // Move assignment operator
-    Character(string name,  Point location, int hit_points)
-            : name_(name), location_(location), hit_points_(hit_points), inTeam_(false) {}
+    Character(string name, const Point& location, int hit_points)
+            : name_(std::move(name)), location_(location), hit_points_(hit_points), inTeam_(false) {}
     Point getLocation(){return location_;}
     string getName(){return name_;}
     int getHitPoints() const{return hit_points_;}
@@ -52,6 +52,7 @@ public:
     bool getInTeam() const{ return inTeam_;}
     void setInTeam(bool boolean){inTeam_=boolean;}
     virtual ~Character() = default;
+    void setLocation(Point other){location_= other;}
 };
 
 
