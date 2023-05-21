@@ -10,7 +10,7 @@ static const int Old_DEFAULT_SPEED = 8;
 
 class OldNinja : public Ninja {
 public:
-    OldNinja(string name, Point location) : Ninja(std::move(name), location, Old_DEFAULT_HIT_POINTS, Old_DEFAULT_SPEED) {}
+    OldNinja(string name, Point location) : Ninja(std::move(name),Old_DEFAULT_HIT_POINTS, location, Old_DEFAULT_SPEED) {}
 
 };
 

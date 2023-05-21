@@ -141,11 +141,12 @@ void Team::print() {
 
 
 Team::~Team() {
-    // Clear the vector to remove all elements
-    vector_team_.clear();
 
-    // Set the leader pointer to null
-    leader_ = nullptr;
+
+    // Release all characters in the vector_team_
+    for (Character* character : vector_team_) {
+        delete character;
+    }
 }
 
 
@@ -183,6 +184,42 @@ Character* Team::getNewLeader() {
 
     return newLeader;
 }
+
+Team::Team(const Team &other) {
+    vector_team_ = other.vector_team_;
+    leader_= other.leader_;
+    size_ = other.size_;
+
+}
+
+Team &Team::operator=(const Team &other) {
+    if(this == &other){
+        return *this;
+    }
+    vector_team_ = other.vector_team_;
+    leader_ = other.leader_;
+    size_ = other.size_;
+
+    return *this;
+}
+
+Team::Team(Team &&other) noexcept{
+    vector_team_ = other.vector_team_;
+    leader_ = other.leader_;
+    size_=other.size_;
+}
+
+Team &Team::operator=(Team &&other) noexcept{
+    vector_team_ = other.vector_team_;
+    leader_ = other.leader_;
+    size_ = other.size_;
+
+    return *this;
+}
+
+
+
+
 
 
 

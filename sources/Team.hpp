@@ -39,12 +39,18 @@ public:
     int stillAlive();
     virtual void print();
     void setLeader(Character *newLeader){leader_= newLeader;}
-    virtual ~Team();
     virtual Character* getClosest(Team *other);
     Character* getNewLeader();
     vector<Character*> getTeamMembers() {return vector_team_;}
-    void setSize(int size){size_ = size;}
-    int getSize(){return size_;}
+    void setSize  (int size){size_ = size;}
+    int getSize () const {return size_;}
+    Team(const Team& other);  // copy constructor
+    Team& operator=(const Team& other);  //copy assignment operator
+    Team(Team&& other) noexcept;  // move constructor
+    Team& operator=(Team&& other) noexcept;  // move assignment operator
+
+
+    virtual ~Team();  //  destructor
 
 
 
