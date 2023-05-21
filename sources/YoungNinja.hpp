@@ -11,7 +11,7 @@ const int Young_SPEED = 14;
 
 class YoungNinja : public Ninja{
 public:
-    YoungNinja(string name, Point location) : Ninja(name, location,Young_LIFE,Young_SPEED){}
+    YoungNinja(string name, Point location) : Ninja(std::move(name), location, Young_LIFE, Young_SPEED) {}
 
 };
 

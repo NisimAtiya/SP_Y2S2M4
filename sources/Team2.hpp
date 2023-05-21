@@ -11,9 +11,9 @@ public:
     Team2(Character *leader):Team(leader){
         setSize(1);
     }
-    void attack(Team*);
-    void print();
-    Character* getClosest(Team *other);
+    void attack(Team *other_team) override;
+    void print() override;
+    Character* getClosest(Team *other) override;
 
 
 

@@ -20,13 +20,13 @@ void Team2::attack(Team *other_team) {
     if (this->stillAlive() == 0) return;
 
     // Checking that I'm not attacking myself
-    if (leader_ == other_team->getLeader()) {
+    if (this->getLeader() == other_team->getLeader()) {
         throw runtime_error("You are trying to attack yourself!!!");
     }
 
     // Check if the leader of the attacking team is alive and if not replace him with the player closest to him
-    if (!leader_->isAlive()) {
-        leader_ = this->getNewLeader();
+    if (!this->getLeader()->isAlive()) {
+        this->setLeader(this->getNewLeader());
     }
 
     // Find the victim from the enemy group
@@ -61,7 +61,7 @@ void Team2::attack(Team *other_team) {
 }
 
 void Team2::print() {
-    size_t team_size = vector_team_.size();
+    size_t team_size = this->getTeamMembers().size();
     // Iterate over the team members  of Cowboy
     for (size_t i = 0; i < team_size; ++i) {
         cout<<this->getTeamMembers().at(i)->print()<<endl;  // Print team member's information

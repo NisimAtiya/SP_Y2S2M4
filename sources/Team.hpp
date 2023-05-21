@@ -13,7 +13,7 @@
 using namespace std;
 
 class Team {
-protected:
+private:
     int size_;
     Character* leader_;
     vector<Character*> vector_team_;
@@ -39,7 +39,7 @@ public:
     int stillAlive();
     virtual void print();
     void setLeader(Character *newLeader){leader_= newLeader;}
-    ~Team();
+    virtual ~Team();
     virtual Character* getClosest(Team *other);
     Character* getNewLeader();
     vector<Character*> getTeamMembers() {return vector_team_;}

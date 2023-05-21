@@ -11,7 +11,8 @@ const int Trained_SPEED_ = 12;
 
 class TrainedNinja : public Ninja{
 public:
-    TrainedNinja(string name, Point location) : Ninja(name, location,Trained_LIFE_,Trained_SPEED_){}
+    TrainedNinja(string name, Point location) : Ninja(std::move(name), location, Trained_LIFE_, Trained_SPEED_) {}
+
 
 };
 
