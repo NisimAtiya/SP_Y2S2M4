@@ -11,13 +11,13 @@ using namespace std;
 
 class Point {
 protected:
-    double x_;
-    double y_;
+    double _x_;
+    double _y_;
 public:
     Point(double x=0 ,double y=0 ):
-            x_(x),y_(y){}
-    double getX() const{return x_;}
-    double getY() const{return y_;}
+            _x_(x),_y_(y){}
+    double getX() const{return _x_;}
+    double getY() const{return _y_;}
     double distance(Point const);
     static Point moveTowards(Point, Point , double );
     void print();

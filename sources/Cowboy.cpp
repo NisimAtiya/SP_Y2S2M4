@@ -3,12 +3,13 @@
 //
 #include "Cowboy.hpp"
 using namespace std;
+static const int damage = 10;
 
 
 
 
 void Cowboy::shoot(Character *other) {
-    if(other== this){
+    if(other == this){
         throw runtime_error("No self harm!!");
     }
     if(!other->isAlive()){
@@ -18,7 +19,7 @@ void Cowboy::shoot(Character *other) {
         throw runtime_error("You're dead!!");
     }
     if( amount_balls_ > 0){
-        other->hit(10);
+        other->hit(damage);
         amount_balls_=amount_balls_-1;
     }
 }

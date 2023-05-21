@@ -22,8 +22,13 @@ protected:
 
 
 public:
-    Character(string name, Point location,int hit_points):
-            name_(name), location_(location),hit_points_(hit_points),inTeam_(false){}
+    Character(const Character& other) = default;  // Copy constructor
+    Character& operator=(const Character& other) = default;  // Copy assignment operator
+    Character(Character&& other) = default;  // Move constructor
+    Character& operator=(Character&& other) = default;  // Move assignment operator
+
+    Character(string name, Point location, int hit_points)
+            : name_(name), location_(location), hit_points_(hit_points), inTeam_(false) {}
     Point getLocation(){return location_;}
     string getName(){return name_;}
     int getHitPoints() const{return hit_points_;}
@@ -33,7 +38,9 @@ public:
         if(hit <=0){
             throw invalid_argument("hit must have a positive number");
         }
-        if (!isAlive()) return;
+        if (!isAlive()){
+            return;
+        }
         hit_points_-=hit;
     }
     virtual string print(){

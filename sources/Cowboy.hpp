@@ -11,8 +11,12 @@
 class Cowboy : public Character{
     private:
         int amount_balls_;
-    public:
-        Cowboy(string name,Point location):Character(name,location,110),amount_balls_(6){}
+        static const int hp = 10;
+        static const int balls = 6;
+
+public:
+    Cowboy(const string& name,  Point location)
+            : Character(name, location, hp), amount_balls_(balls) {}
         void shoot(Character*);
         bool hasboolets() const{return amount_balls_>0;}
         void reload(){
@@ -21,7 +25,7 @@ class Cowboy : public Character{
             }
             amount_balls_=6;}
         int getAmountBalls(){return amount_balls_;}
-        string print();
+        string print() override;
 
 
 

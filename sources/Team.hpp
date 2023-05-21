@@ -24,14 +24,14 @@ public:
             if (leader->getInTeam()) {
                 throw runtime_error("Character belongs to a team!!!");
             }
-
+            leader_=leader;
             // Add the character to the team
             vector_team_.push_back(leader);
 
             // Set the 'inTeam' flag of the 'other' character to true
             leader->setInTeam(true);
             size_=1;
-            leader_=leader;
+
         }
         Character* getLeader() {return leader_;}
         void add(Character*);

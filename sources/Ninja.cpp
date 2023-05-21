@@ -3,6 +3,7 @@
 //
 
 #include "Ninja.hpp"
+static const int damage = 40;
 
 
 
@@ -23,7 +24,7 @@ void Ninja::slash( Character *other) {
     }
     double distance = location_.distance(other->getLocation());
     if(distance <=1){
-        other->hit(40);
+        other->hit(damage);
     }
 
 }
