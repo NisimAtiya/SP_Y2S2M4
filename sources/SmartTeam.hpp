@@ -5,7 +5,7 @@
 #ifndef SP_Y2S2M4_SMARTTEAM_HPP
 #define SP_Y2S2M4_SMARTTEAM_HPP
 
-
+#include <limits>
 #include "Team.hpp"
 class SmartTeam : public Team{
 public:
